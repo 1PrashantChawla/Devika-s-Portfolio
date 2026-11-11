@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { profile, cv, certificates } from "../data/portfolio";
+import { profile, cv, certificates, work, workCategories, soundcloudProfile } from "../data/portfolio";
 
 /**
  * ATS-friendly A4 résumé. Rendered at  #/cv  and printed to  public/Devika-Bajaj-CV.pdf
@@ -24,6 +24,7 @@ export default function ResumePage() {
             <h1 className="text-[22pt] font-bold leading-none tracking-tight text-neutral-900" style={{ fontFamily: "'Space Grotesk', Arial, sans-serif" }}>DEVIKA BAJAJ</h1>
             <p className="mt-1 text-[10pt] font-semibold text-[#9b0a1d]">Music Producer · Guitarist · Music Educator</p>
             <p className="mt-1.5 text-[8.6pt] text-neutral-600">{[c.phone, c.email, c.location, c.website.replace(/^https?:\/\//, "")].filter(Boolean).join("  |  ")}</p>
+            <p className="mt-0.5 text-[8.6pt] text-neutral-600">Listen: <a href={soundcloudProfile} className="text-[#9b0a1d]">{soundcloudProfile.replace(/^https?:\/\//, "")}</a></p>
           </div>
         </header>
 
@@ -39,6 +40,13 @@ export default function ResumePage() {
                 <ul className="ml-4 list-disc">{e.points.map((p) => <li key={p}>{p}</li>)}</ul>
               </div>
             ))}
+
+            <H>Selected Work</H>
+            <ul className="ml-4 list-disc">
+              {workCategories.filter((c) => work.some((w) => w.category === c.id)).map((c) => (
+                <li key={c.id}><b className="text-neutral-900">{c.label}:</b> {work.filter((w) => w.category === c.id).map((w, i, a) => <span key={w.id}><a href={w.url} className="text-[#9b0a1d]">{w.title.replace(" (guitars)", "")}</a>{i < a.length - 1 ? ", " : ""}</span>)}</li>
+              ))}
+            </ul>
 
             <H>Performance Experience</H>
             <ul className="ml-4 list-disc">

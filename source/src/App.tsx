@@ -17,6 +17,7 @@ import ContactSection, { ResumeSection, Footer } from "./components/ContactSecti
 import CertificateModal from "./components/CertificateModal";
 import ProjectModal from "./components/ProjectModal";
 import ResumePage from "./components/ResumePage";
+import WorkSection from "./components/WorkSection";
 
 function useHash() {
   const [h, setH] = useState(window.location.hash);
@@ -54,6 +55,7 @@ export default function App() {
         <HeroSection />
         <AboutSection />
         <SkillsSection />
+        <WorkSection />
         <PerformanceGallery />
         <TeachingSection />
         <AudioProductionSection />

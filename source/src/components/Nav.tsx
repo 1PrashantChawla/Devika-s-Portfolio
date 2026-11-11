@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 export const NAV = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
+  { id: "listen", label: "Listen" },
   { id: "performances", label: "Live" },
   { id: "teaching", label: "Teaching" },
   { id: "sound", label: "Sound" },

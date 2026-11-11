@@ -111,11 +111,10 @@ export default function AudioProductionSection() {
           {audioTracks.length ? (
             <div className="mt-4 grid gap-4 md:grid-cols-2">{audioTracks.map((t) => <AudioPlayer key={t.src} track={t} />)}</div>
           ) : (
-            <div className="glass mt-4 flex flex-col items-center gap-4 px-6 py-8 text-center sm:flex-row sm:text-left">
-              <Waveform bars={36} height={36} className="opacity-50" />
-              <p className="text-sm text-muted">Audio recordings will be added here soon.</p>
-              <DraftChip>Add tracks to /assets/audio and list them in audioTracks</DraftChip>
-            </div>
+            <a href="#listen" className="glass mt-4 flex flex-col items-center gap-4 px-6 py-6 text-center transition hover:border-accent/50 sm:flex-row sm:text-left">
+              <Waveform bars={36} height={36} className="opacity-60" />
+              <p className="text-sm text-muted">Hear the finished tracks — production, guitar arrangements, binaural meditation and ad scoring — in <span className="font-semibold text-rose">Listen to My Work</span></p>
+            </a>
           )}
         </Reveal>
       </div>

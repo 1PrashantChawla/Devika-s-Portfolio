@@ -572,3 +572,130 @@ export const toConfirm = [
   "Link to the full research paper (only the certificate was supplied)",
   "LinkedIn / Instagram / YouTube links, audio recordings, videos",
 ];
+
+/* ───────────────────────────── Work / Listen (SoundCloud + YouTube) ─────────────────────────────
+ * Scraped from Devika's own SoundCloud & YouTube links (Nov 2026).
+ * To add a track: copy one block, paste the share link's details. `embed` is the
+ * SoundCloud API uri (includes the secret token for private tracks).            */
+
+export type WorkCategory = "production" | "guitar" | "binaural" | "ad" | "vocal";
+
+export const workCategories: { id: WorkCategory; label: string }[] = [
+  { id: "production", label: "Music Production & Mixing" },
+  { id: "guitar", label: "Guitar Arrangements" },
+  { id: "binaural", label: "Binaural Beats & Meditation" },
+  { id: "ad", label: "Ad Scoring" },
+  { id: "vocal", label: "Vocal Processing" },
+];
+
+export interface WorkItem {
+  id: string;
+  title: string;
+  category: WorkCategory;
+  platform: "soundcloud" | "youtube";
+  url: string;
+  embed: string;
+  artwork: string;
+  duration: string;
+  genre?: string;
+  tags?: string[];
+  summary: string;
+  description: string;
+  vertical?: boolean;
+}
+
+const sc = (apiUri: string) =>
+  `https://w.soundcloud.com/player/?url=${encodeURIComponent(apiUri)}&color=%23e50925&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true`;
+
+export const work: WorkItem[] = [
+  {
+    id: "spaces",
+    title: "Spaces",
+    category: "production",
+    platform: "soundcloud",
+    url: "https://soundcloud.com/devika-bajaj-97767670/spaces/s-pBrzwMKnatt",
+    embed: sc("https://api.soundcloud.com/tracks/soundcloud%3Atracks%3A2432451375?secret_token=s-pBrzwMKnatt"),
+    artwork: "https://i1.sndcdn.com/artworks-CH4nZjSVVHHy6C1q-URXv5w-t500x500.jpg",
+    duration: "1:23",
+    genre: "Electronic",
+    tags: ["Downtempo", "Ambient", "Soundscape"],
+    summary: "Ambient electronic composition with evolving textures and cinematic layers.",
+    description:
+      "An ambient electronic composition built around evolving textures, spacious soundscapes and a slow, flowing atmosphere. Blending rhythmic elements with cinematic layers, the track creates a sense of movement while maintaining a calm and immersive character.",
+  },
+  {
+    id: "bahano-bahano",
+    title: "Bahano Bahano",
+    category: "production",
+    platform: "soundcloud",
+    url: "https://soundcloud.com/devika-bajaj-97767670/bahano-bahano-project/s-HQ7o1KhXHG7",
+    embed: sc("https://api.soundcloud.com/tracks/soundcloud%3Atracks%3A2431930932?secret_token=s-HQ7o1KhXHG7"),
+    artwork: "https://i1.sndcdn.com/artworks-OJSWvdZ0N4yAc9G6-dQglRw-t500x500.jpg",
+    duration: "0:58",
+    genre: "Ambient",
+    summary: "Recreation of the background score and texture of ‘Bahano Bahano’ (college assignment).",
+    description:
+      "A college assignment: replicate the background music and texture of a song and upload a part of it. Devika chose ‘Bahano Bahano’ by Shivam Sengupta and Anuj Danait, from the Netflix series “Yeh Kaali Kaali Aankhein”, and produced her own version of it.",
+  },
+  {
+    id: "fly-me-to-the-moon",
+    title: "Fly Me to the Moon (guitars)",
+    category: "guitar",
+    platform: "soundcloud",
+    url: "https://soundcloud.com/devika-bajaj-97767670/fly-me-to-the-moon-guitars",
+    embed: sc("https://api.soundcloud.com/tracks/soundcloud%3Atracks%3A2431926237"),
+    artwork: "https://i1.sndcdn.com/artworks-g4fXheUwe3h6yXlu-T5Bqtg-t500x500.jpg",
+    duration: "1:22",
+    genre: "Jazz & Blues",
+    tags: ["Classical guitar", "Guitar arrangement", "Nylon strings"],
+    summary: "Multi-layered nylon-string guitar arrangement of the jazz standard.",
+    description:
+      "A nylon-string arrangement of ‘Fly Me to the Moon’. Multiple guitars are layered: a low-end layer and a higher lead layer, panned to create space between the frequencies. Harmonics add a subtle bell-like effect, chords are built mostly from the tonic, mediant, dominant and leading notes, and power chords give the track its punch. In the second half, light percussion played on the guitar's body joins in — keeping the arrangement all-guitar.",
+  },
+  {
+    id: "in-sync",
+    title: "In Sync",
+    category: "binaural",
+    platform: "soundcloud",
+    url: "https://soundcloud.com/devika-bajaj-97767670/in-sync/s-Nhu1293xdUW",
+    embed: sc("https://api.soundcloud.com/tracks/soundcloud%3Atracks%3A2431935246?secret_token=s-Nhu1293xdUW"),
+    artwork: "https://i1.sndcdn.com/artworks-oLtblm0vcpzf6Efp-H3uFjw-t500x500.jpg",
+    duration: "2:27",
+    genre: "Ambient",
+    tags: ["6 Hz theta", "E Major"],
+    summary: "Meditation track: 6 Hz theta binaural beats with ambient music in E Major.",
+    description:
+      "An immersive meditation composition combining 6 Hz theta-range binaural beats with ambient musical elements composed in E Major. Best experienced on headphones.",
+  },
+  {
+    id: "wavy-silence",
+    title: "Wavy Silence",
+    category: "binaural",
+    platform: "soundcloud",
+    url: "https://soundcloud.com/devika-bajaj-97767670/wavy-silence/s-WnusqLyLHgR",
+    embed: sc("https://api.soundcloud.com/tracks/soundcloud%3Atracks%3A2431939869?secret_token=s-WnusqLyLHgR"),
+    artwork: "https://i1.sndcdn.com/artworks-6qFSynmTAg8jWuuZ-ROby2g-t500x500.jpg",
+    duration: "2:49",
+    genre: "Ambient",
+    tags: ["6 Hz theta", "C Major", "Ocean sounds"],
+    summary: "6 Hz binaural beat layered with a C Major composition and ocean sounds.",
+    description:
+      "An ambient meditation composition: two slightly different frequencies create a 6 Hz theta binaural beat, layered with a C Major musical composition and ocean sound effects to calm the mind and deepen relaxation. Best experienced on headphones.",
+  },
+  {
+    id: "sony-ad",
+    title: "Sony — Headphones Advertisement",
+    category: "ad",
+    platform: "youtube",
+    url: "https://youtube.com/shorts/_f0cr7L79lI",
+    embed: "https://www.youtube-nocookie.com/embed/_f0cr7L79lI?autoplay=1&rel=0",
+    artwork: "https://i.ytimg.com/vi/_f0cr7L79lI/hq2.jpg",
+    duration: "Short",
+    tags: ["Ad scoring", "Sync to picture"],
+    summary: "An ad-scoring exercise: original music written to picture for a Sony headphones ad.",
+    description: "An attempt at ad scoring — composing and producing original music to picture for a Sony headphones advertisement.",
+    vertical: true,
+  },
+];
+
+export const soundcloudProfile = "https://soundcloud.com/devika-bajaj-97767670";
