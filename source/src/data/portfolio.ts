@@ -696,6 +696,19 @@ export const work: WorkItem[] = [
     description: "An attempt at ad scoring — composing and producing original music to picture for a Sony headphones advertisement.",
     vertical: true,
   },
+  {
+    id: "malabar-ad",
+    title: "Malabar — Jewellery Advertisement",
+    category: "ad",
+    platform: "youtube",
+    url: "https://youtu.be/sDBH9satUGE",
+    embed: "https://www.youtube-nocookie.com/embed/sDBH9satUGE?autoplay=1&rel=0",
+    artwork: "https://i.ytimg.com/vi/sDBH9satUGE/hqdefault.jpg",
+    duration: "1:01",
+    tags: ["Ad scoring", "Jewellery brand", "Sync to picture"],
+    summary: "Original score written for an ad by the jewellery brand Malabar.",
+    description: "A portfolio piece scoring an advertisement for the jewellery brand Malabar, in Devika's own musical style — original music composed and produced to picture.",
+  },
 ];
 
 export const soundcloudProfile = "https://soundcloud.com/devika-bajaj-97767670";

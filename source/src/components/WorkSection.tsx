@@ -26,8 +26,8 @@ function WorkCard({ w }: { w: WorkItem }) {
 
   return (
     <motion.article layout initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.3 }}
-      className={`work-card gradient-border flex flex-col overflow-hidden rounded-3xl bg-wine/80 ${isYT ? "sm:row-span-2" : ""}`}>
-      <div className={`relative overflow-hidden bg-black ${isYT ? "aspect-[9/14]" : "aspect-square"}`}>
+      className={`work-card gradient-border flex flex-col overflow-hidden rounded-3xl bg-wine/80 ${w.vertical ? "sm:row-span-2" : ""}`}>
+      <div className={`relative overflow-hidden bg-black ${w.vertical ? "aspect-[9/14]" : isYT ? "aspect-video" : "aspect-square"}`}>
         {playing ? (
           <iframe
             src={w.embed}
