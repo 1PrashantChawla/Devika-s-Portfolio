@@ -137,7 +137,7 @@ export const profile = {
     website: "https://devikabajaj.wix.com",
     linkedin: "",
     instagram: "",
-    youtube: "",
+    youtube: "https://www.youtube.com/@magicalstrings7478",
   },
   cvPdf: "./Devika-Bajaj-CV.pdf",
 };
@@ -712,3 +712,7 @@ export const work: WorkItem[] = [
 ];
 
 export const soundcloudProfile = "https://soundcloud.com/devika-bajaj-97767670";
+
+/* Live website (GitHub Pages). Used for absolute links in the CV / PDFs. */
+export const siteUrl = "https://1prashantchawla.github.io/Devika-s-Portfolio/";
+export const abs = (p: string) => (/^https?:/.test(p) ? p : siteUrl + p.replace(/^\.\//, ""));

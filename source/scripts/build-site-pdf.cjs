@@ -33,6 +33,15 @@ const W = 1280, H = Math.round(1280 * 297 / 210); // A4 proportions at desktop w
     imgs.forEach(i => { i.loading = 'eager'; i.src = i.src.replace(/\.jpg$/, '-sm.jpg'); });
     await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })));
   });
+  // make every relative link absolute so links still work inside the downloaded PDF
+  await p.evaluate((site) => {
+    document.querySelectorAll('a[href]').forEach(a => {
+      const h = a.getAttribute('href');
+      if (h.startsWith('#/cv')) a.href = site + 'Devika-Bajaj-CV.pdf';
+      else if (h.startsWith('#')) a.href = site + h;
+      else if (!/^(https?:|mailto:|tel:)/.test(h)) a.href = site + h.replace(/^\.\//, '');
+    });
+  }, 'https://1prashantchawla.github.io/Devika-s-Portfolio/');
   await p.emulateMedia({ media: 'screen' });
   await p.waitForTimeout(500);
   // smart pagination: never let a section start near the bottom of a page or be split if it fits on one page

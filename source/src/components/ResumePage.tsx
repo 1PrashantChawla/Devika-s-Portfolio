@@ -1,10 +1,17 @@
 import { useEffect } from "react";
-import { profile, cv, certificates, work, workCategories, soundcloudProfile } from "../data/portfolio";
+import { profile, cv, certificates, work, workCategories, soundcloudProfile, siteUrl, abs } from "../data/portfolio";
 
 /**
  * ATS-friendly A4 résumé. Rendered at  #/cv  and printed to  public/Devika-Bajaj-CV.pdf
  * by `npm run cv` (real, selectable text — not a screenshot).
  */
+/** Small "View ↗" link to a certificate hosted on the live site. */
+function L({ c, label = "View" }: { c: string; label?: string }) {
+  const cert = certificates.find((x) => x.id === c);
+  if (!cert) return null;
+  return <a href={abs(cert.file ?? cert.image)} className="whitespace-nowrap text-[8pt] font-semibold text-[#9b0a1d]">{label} ↗</a>;
+}
+
 export default function ResumePage() {
   useEffect(() => { document.title = "Devika Bajaj — CV"; window.scrollTo(0, 0); }, []);
   const c = profile.contact;
@@ -23,8 +30,15 @@ export default function ResumePage() {
           <div className="flex-1">
             <h1 className="text-[22pt] font-bold leading-none tracking-tight text-neutral-900" style={{ fontFamily: "'Space Grotesk', Arial, sans-serif" }}>DEVIKA BAJAJ</h1>
             <p className="mt-1 text-[10pt] font-semibold text-[#9b0a1d]">Music Producer · Guitarist · Music Educator</p>
-            <p className="mt-1.5 text-[8.6pt] text-neutral-600">{[c.phone, c.email, c.location, c.website.replace(/^https?:\/\//, "")].filter(Boolean).join("  |  ")}</p>
-            <p className="mt-0.5 text-[8.6pt] text-neutral-600">Listen: <a href={soundcloudProfile} className="text-[#9b0a1d]">{soundcloudProfile.replace(/^https?:\/\//, "")}</a></p>
+            <p className="mt-1.5 text-[8.6pt] text-neutral-600">
+              <a href={`tel:${c.phone.replace(/\s/g, "")}`}>{c.phone}</a>  |  <a href={`mailto:${c.email}`} className="text-[#9b0a1d]">{c.email}</a>  |  {c.location}
+            </p>
+            <p className="mt-0.5 text-[8.6pt] text-neutral-600">
+              <b className="text-neutral-800">Portfolio:</b> <a href={siteUrl} className="text-[#9b0a1d]">{siteUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}</a>
+            </p>
+            <p className="mt-0.5 text-[8.6pt] text-neutral-600">
+              <a href={soundcloudProfile} className="text-[#9b0a1d]">SoundCloud</a>  ·  <a href={c.youtube} className="text-[#9b0a1d]">YouTube</a>  ·  <a href={c.website} className="text-[#9b0a1d]">{c.website.replace(/^https?:\/\//, "")}</a>  ·  <a href={abs(profile.cvPdf)} className="text-[#9b0a1d]">Download this CV (PDF)</a>
+            </p>
           </div>
         </header>
 
@@ -58,12 +72,12 @@ export default function ResumePage() {
             <H>Sound Engineering Experience</H>
             <ul className="ml-4 list-disc">
               <li>Yoga Nidra live event — sound desk with Yamaha mixer, wireless mics, amplification and laptop playback</li>
-              <li>Volunteer, Sound — 16th Global Film Festival Noida, Marwah Studios (7–9 Dec 2023)</li>
+              <li>Volunteer, Sound — 16th Global Film Festival Noida, Marwah Studios (7–9 Dec 2023) <L c="gff" /></li>
             </ul>
 
             <H>Research Publication</H>
-            <p><b className="text-neutral-900">“Perception of Correlation Between Indian and Western Music as a Cathartic Tool: A Comparative Study”</b> — AAFT Journal, Vol. 1, Issue 1, January 2026 (Paper ID AAFTJ 2601005, ISSN 3107-9288).</p>
-            <p className="mt-1">Seminar participant: “Comparative Study of Indian and Western Music”, AAFT, Film City, Noida — 3 June 2024.</p>
+            <p><b className="text-neutral-900">“Perception of Correlation Between Indian and Western Music as a Cathartic Tool: A Comparative Study”</b> — AAFT Journal, Vol. 1, Issue 1, January 2026 (Paper ID AAFTJ 2601005, ISSN 3107-9288). <L c="aaftj" label="View certificate" /></p>
+            <p className="mt-1">Seminar participant: “Comparative Study of Indian and Western Music”, AAFT, Film City, Noida — 3 June 2024. <L c="aaft-seminar" label="View pass" /></p>
           </div>
 
           <aside>
@@ -81,7 +95,7 @@ export default function ResumePage() {
               <div key={q.id} className="mb-1.5">
                 <p className="font-bold text-neutral-900">{q.title}{q.badge === "Distinction" ? ` — Distinction${q.id === "trinity" ? " (91/100)" : ""}` : ""}</p>
                 <p>{q.institution}</p>
-                {q.year && <p className="text-neutral-500">{q.year}</p>}
+                <p className="text-neutral-500">{q.year ? `${q.year} · ` : ""}<L c={q.id} label={q.file ? "View report" : "View certificate"} /></p>
               </div>
             ))}
 
