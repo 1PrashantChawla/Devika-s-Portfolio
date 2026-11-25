@@ -547,7 +547,7 @@ export const audioTracks: AudioTrack[] = [];
 
 export const cv = {
   summary:
-    "Music producer and guitarist with a background in classical, acoustic and electric guitar, and experience in recording, mixing, audio editing and music production. Interested in immersive audio and the connection between music, sound and storytelling; studies in psychology and music shape a research-led approach. Formal guitar training (Trinity College London Grade 3 Classical Guitar — Distinction, 91/100; two-year Level II course, Tansen Sangeet Mahavidyalaya). Published researcher on Indian and Western music as a cathartic tool (AAFT Journal, 2026).",
+    "Music producer and guitarist with a background in classical, acoustic and electric guitar, and experience in recording, mixing, audio editing and music production. Interested in immersive audio and the connection between music, sound and storytelling; studies in psychology and music shape a research-led approach. Trinity College London Grade 3 Classical Guitar — Distinction (91/100). Published researcher on Indian and Western music as a cathartic tool (AAFT Journal, 2026).",
   musicalSkills: ["Classical, acoustic & electric guitar", "Fingerstyle guitar", "Ukulele", "Music theory teaching", "Band & ensemble performance", "Student event preparation"],
   technicalSkills: ["Music production", "Recording", "Mixing", "Audio editing & processing", "Logic Pro", "Binaural / meditation audio", "Sound design (software synths)", "Live sound: mixers, wireless mics, PA"],
   education: [
@@ -714,5 +714,5 @@ export const work: WorkItem[] = [
 export const soundcloudProfile = "https://soundcloud.com/devika-bajaj-97767670";
 
 /* Live website (GitHub Pages). Used for absolute links in the CV / PDFs. */
-export const siteUrl = "https://1prashantchawla.github.io/Devika-s-Portfolio/";
+export const siteUrl = "https://devikamusic.netlify.app/";
 export const abs = (p: string) => (/^https?:/.test(p) ? p : siteUrl + p.replace(/^\.\//, ""));

@@ -41,7 +41,7 @@ const W = 1280, H = Math.round(1280 * 297 / 210); // A4 proportions at desktop w
       else if (h.startsWith('#')) a.href = site + h;
       else if (!/^(https?:|mailto:|tel:)/.test(h)) a.href = site + h.replace(/^\.\//, '');
     });
-  }, 'https://1prashantchawla.github.io/Devika-s-Portfolio/');
+  }, 'https://devikamusic.netlify.app/');
   await p.emulateMedia({ media: 'screen' });
   await p.waitForTimeout(500);
   // smart pagination: never let a section start near the bottom of a page or be split if it fits on one page

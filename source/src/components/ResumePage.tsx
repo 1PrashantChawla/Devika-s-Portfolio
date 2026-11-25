@@ -37,7 +37,7 @@ export default function ResumePage() {
               <b className="text-neutral-800">Portfolio:</b> <a href={siteUrl} className="text-[#9b0a1d]">{siteUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}</a>
             </p>
             <p className="mt-0.5 text-[8.6pt] text-neutral-600">
-              <a href={soundcloudProfile} className="text-[#9b0a1d]">SoundCloud</a>  ·  <a href={c.youtube} className="text-[#9b0a1d]">YouTube</a>  ·  <a href={c.website} className="text-[#9b0a1d]">{c.website.replace(/^https?:\/\//, "")}</a>  ·  <a href={abs(profile.cvPdf)} className="text-[#9b0a1d]">Download this CV (PDF)</a>
+              <a href={soundcloudProfile} className="text-[#9b0a1d]">SoundCloud</a>  ·  <a href={c.youtube} className="text-[#9b0a1d]">YouTube</a>  ·  <a href={abs(profile.cvPdf)} className="text-[#9b0a1d]">Download this CV (PDF)</a>
             </p>
           </div>
         </header>
